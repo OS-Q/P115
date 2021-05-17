@@ -55,9 +55,7 @@ jobs:
       matrix:
         example:
           - "arduino-blink"
-          - "arduino-external-libs"
-          - "arduino-internal-libs"
-          - "native-blink"
+
         package: ["pio","qio"]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
