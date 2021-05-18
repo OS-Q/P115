@@ -14,11 +14,6 @@ class P115Platform(PlatformBase):
             "board_build.core", self.board_config(variables.get("board")).get(
                 "build.core", "arduino"))
 
-        if "arduino" in variables.get("pioframework", []) and build_core != "arduino":
-            framework_package = "framework-arduino-megaavr-%s" % build_core.lower()
-            self.frameworks["arduino"]["package"] = framework_package
-            self.packages[framework_package]["optional"] = False
-            self.packages["framework-arduino-megaavr"]["optional"] = True
 
             if build_core in ("MegaCoreX", "megatinycore"):
                 self.packages["toolchain-atmelavr"]["version"] = "~2.70300.0"

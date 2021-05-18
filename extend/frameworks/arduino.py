@@ -7,10 +7,7 @@ platform = env.PioPlatform()
 board = env.BoardConfig()
 build_core = board.get("build.core", "")
 
-FRAMEWORK_DIR = platform.get_package_dir("framework-arduino-megaavr")
-if build_core != "arduino":
-    FRAMEWORK_DIR = platform.get_package_dir(
-        "framework-arduino-megaavr-%s" % build_core.lower())
+FRAMEWORK_DIR = platform.get_package_dir("A115")
 
 assert isdir(FRAMEWORK_DIR)
 
@@ -24,9 +21,9 @@ if "build.usb_product" in board:
         ("USB_VID", board.get("build.hwids")[0][0]),
         ("USB_PID", board.get("build.hwids")[0][1]),
         ("USB_PRODUCT", '\\"%s\\"' %
-         board.get("build.usb_product", "").replace('"', "")),
+        board.get("build.usb_product", "").replace('"', "")),
         ("USB_MANUFACTURER", '\\"%s\\"' %
-         board.get("vendor", "").replace('"', ""))
+        board.get("vendor", "").replace('"', ""))
     ]
 
 env.SConscript("_bare.py", exports="env")
